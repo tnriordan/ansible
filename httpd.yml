@@ -1,0 +1,12 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+  - name: Install Httpd Latest
+    yum:
+      name: httpd
+      state: latest
+  - name: Start Httpd
+    service:
+      name: httpd
+      state: started

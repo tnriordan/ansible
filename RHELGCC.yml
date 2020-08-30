@@ -1,0 +1,16 @@
+---
+- name: Install tools needed for writing c and making RPMs
+  hosts: rhel
+  tasks:
+    - name: Install gcc
+      yum:
+        pkg: gcc
+        state: latest
+    - name: Install vim
+      yum:
+        pkg: vim
+        state: latest
+    - name: Install RPM Tools
+      yum:
+        pkg: rpmdevtools
+        state: latest

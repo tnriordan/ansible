@@ -1,0 +1,6 @@
+---
+- name: Install mysql on the web hosts
+  hosts: web
+  
+  roles:
+  - mariadb

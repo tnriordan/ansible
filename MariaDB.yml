@@ -1,0 +1,7 @@
+---
+- name: Install MySQL server
+  hosts: web
+
+  tasks: 
+  - name: install maria
+    yum: name=mariadb state=latest

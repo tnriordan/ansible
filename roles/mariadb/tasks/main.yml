@@ -1,0 +1,7 @@
+---
+# tasks file for mysql
+- name: Install MySQL server
+  yum: name=mariadb state=latest
+
+- name: State the MySQL server
+  service: name=mariadb state=started

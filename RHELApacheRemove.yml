@@ -1,0 +1,11 @@
+---
+- name: Install Apache on my RHEL8 server
+  hosts: rhel
+  remote_user: tuberous
+  become: yes
+
+  tasks:
+  - name : Remove Apache
+    yum:
+      pkg: httpd
+      state: removed

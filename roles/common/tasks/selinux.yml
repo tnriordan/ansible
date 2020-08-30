@@ -1,0 +1,11 @@
+---
+- name: install python and selinux
+  yum: name={{item}} state=present
+  with_items:
+  - libselinux-python
+  - libsemanage-python
+
+- name: test selinux
+  command: getenforce
+  register: sestatus
+  changed_when: false

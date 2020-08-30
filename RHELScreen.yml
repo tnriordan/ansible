@@ -1,0 +1,9 @@
+---
+- name: Install Screen on redhat
+  hosts: web
+  tasks:
+    - name: Install Screen
+      yum:
+        pkg: screen
+        state: latest
+

@@ -1,0 +1,18 @@
+---
+- name: Install Apache on my RHEL8 server
+  hosts: rhel
+  vars:
+    http_port: 80
+    max_connections: 100
+  remote_user: tuberous
+  become: yes
+
+  tasks:
+  - name : Install Apache
+    yum:
+      pkg: httpd
+      state: latest
+  - name : Start Apache
+    service:
+     name: httpd
+     state: started

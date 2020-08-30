@@ -1,0 +1,8 @@
+---
+- name: Install and set up GIT repository on server
+  hosts: rhel
+  tasks:
+   - name: Install GIT on the system
+     yum:
+       pkg: git
+       state: present

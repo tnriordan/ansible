@@ -1,0 +1,7 @@
+---
+- name: Install MySQL server
+  hosts: web
+  yum: name=mariadb state=latest
+
+- name: State the MySQL server
+  service: name=mariadb state=started
