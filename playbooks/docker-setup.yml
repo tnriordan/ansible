@@ -1,0 +1,37 @@
+---
+- name: Setup Docker environment
+  hosts: local
+  become: true
+
+  tasks:
+    - name: Install required packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Create a test file
+      copy:
+        dest: /tmp/hello-docker-ansible.txt
+        content: "Docker installed & managed by Ansible!\n"
+
+    - name: Pull hello-world image
+      community.docker.docker_image:
+        name: hello-world
+        source: pull
+
