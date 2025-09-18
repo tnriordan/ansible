@@ -1,0 +1,9 @@
+---
+- name: Bootstrap Software Needed for Nginx Servers
+  hosts: containers
+  gather_facts: false
+  tasks:
+    - name: Install Python in Debian/Ubuntu based images
+      raw: apt-get update && apt-get install -y python3
+      changed_when: false
+
