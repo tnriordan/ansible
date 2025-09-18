@@ -1,0 +1,14 @@
+---
+- name: Setup Nginx environment
+  hosts: web
+
+  tasks:
+    - name: Install required packages
+      apt:
+        name:
+          - sudo
+          - nginx
+        state: present
+        update_cache: yes
+
+
