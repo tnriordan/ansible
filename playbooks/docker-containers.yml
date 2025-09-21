@@ -6,33 +6,44 @@
     - community.docker
 
   tasks:
-    - name: Pull Ubuntu image
+    - name: Build Nginx Base Container
       community.docker.docker_image:
-        name: ubuntu
-        source: pull
+        name: nginx-python
+        build:
+          path: ./docerfiles/nginx
+        source: build
+
+    - name: Build Nginx Base Container
+      community.docker.docker_image:
+        name: pgs-python
+        build:
+          path: ./docerfiles/postgres
+        source: build
 
     - name: Create nginx-test-1 container
       community.docker.docker_container:
         name: nginx-test-1
         image: nginx-python
-        command: bash -c "sleep infinity"
         state: started
         restart_policy: always
+        recreate: false
 
     - name: Create nginx-test-2 container
       community.docker.docker_container:
         name: nginx-test-2
         image: nginx-python
-        command: bash -c "sleep infinity"
         state: started
         restart_policy: always
+        recreate: false
 
     - name: create pgs-test-1 container
       community.docker.docker_container:
         name: pgs-test-1
         image: pgs-python
-        command: bash -c "sleep infinity"
         state: started
+        restart_policy: always
+        recreate: false
+        pull: false
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
