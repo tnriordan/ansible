@@ -20,21 +20,16 @@
           path: ./docerfiles/postgres
         source: build
 
-    - name: Create nginx-test-1 container
+    - name: Create nginx test containers
       community.docker.docker_container:
-        name: nginx-test-1
+        name: "{{ item }}"
         image: nginx-python
         state: started
         restart_policy: always
         recreate: false
-
-    - name: Create nginx-test-2 container
-      community.docker.docker_container:
-        name: nginx-test-2
-        image: nginx-python
-        state: started
-        restart_policy: always
-        recreate: false
+      loop:
+          - nginx-test-1
+          - nginx-test-2
 
     - name: create pgs-test-1 container
       community.docker.docker_container:
