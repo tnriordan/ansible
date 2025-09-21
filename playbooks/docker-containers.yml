@@ -10,14 +10,14 @@
       community.docker.docker_image:
         name: nginx-python
         build:
-          path: ./docerfiles/nginx
+          path: ./dockerfiles/nginx
         source: build
 
     - name: Build Nginx Base Container
       community.docker.docker_image:
         name: pgs-python
         build:
-          path: ./docerfiles/postgres
+          path: ./dockerfiles/postgres
         source: build
 
     - name: Create nginx test containers
